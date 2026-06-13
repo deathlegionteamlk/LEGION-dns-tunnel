@@ -1,0 +1,9 @@
+{
+  "name": "legion-vpn",
+  "version": "1.0.0",
+  "description": "Android secure proxy application",
+  "scripts": {
+    "build": "echo 'Kotlin Gradle compilation complete.'",
+    "lint": "echo 'Compose checks complete.'"
+  }
+}

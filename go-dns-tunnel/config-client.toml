@@ -1,0 +1,43 @@
+# Legion DNS Tunnel - Client Configuration
+# Specialized high-stability DNS tunnel for high-loss network environments
+
+[socks5]
+listen_addr = "127.0.0.1:1080"
+timeout_seconds = 30
+
+[protocol]
+# Low-overhead DNS framing protocol (LGN-v2)
+mode = "txt"                    # Options: "txt", "a", "cname", "aaaa"
+max_payload_bytes = 110         # Safe value for DNS TXT payloads without fragmentation
+session_timeout_ms = 5000       # Clean up inactive TCP sessions
+sliding_window_size = 16        # Number of unacknowledged packets to pipeline
+retransmit_interval_ms = 400    # Fast retransmission on packet failure
+
+[tunnel]
+# Target domain where the server controls the authoritative DNS zone
+target_domain = "tunnel.legion.net"
+encryption_key = "ecdhe-curve25519-aes-gcm-sha256-key-token-here"
+
+[[resolvers]]
+name = "Google Primary"
+address = "8.8.8.8:53"
+weight = 5
+health_check_interval_seconds = 10
+
+[[resolvers]]
+name = "Cloudflare Secure"
+address = "1.1.1.1:53"
+weight = 5
+health_check_interval_seconds = 10
+
+[[resolvers]]
+name = "Quad9 Secure"
+address = "9.9.9.9:53"
+weight = 3
+health_check_interval_seconds = 15
+
+[[resolvers]]
+name = "OpenDNS Resolver"
+address = "208.67.222.222:53"
+weight = 2
+health_check_interval_seconds = 20

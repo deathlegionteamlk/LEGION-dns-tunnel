@@ -1,0 +1,22 @@
+# Legion DNS Tunnel - Server Configuration
+# Authoritative DNS-to-TCP bridging gateway
+
+[dns]
+# Listen on UDP port 53 for incoming tunnel routing requests
+listen_addr = "0.0.0.0:53"
+target_domain = "tunnel.legion.net"
+
+[socks5]
+# Address where SOCKS5 proxy server redirects connections on the host system
+socks5_bridge_addr = "127.0.0.1:1080"
+
+[server]
+encryption_key = "ecdhe-curve25519-aes-gcm-sha256-key-token-here"
+max_connections = 1000
+idle_timeout_seconds = 120
+enable_multipath_aggregation = true
+
+[logging]
+level = "info"
+log_traffic_statistics = true
+stat_interval_seconds = 60

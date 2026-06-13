@@ -1,0 +1,6 @@
+{
+  "name": "Legion VPN",
+  "description": "Secure DNS Tunnel with Geometric Balance design",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
